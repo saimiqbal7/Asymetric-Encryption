@@ -1,0 +1,14 @@
+{
+  "name": "fin-encrypt",
+  "version": "1.0.0",
+  "description": "encryption decryption signature and verify",
+  "main": "enc.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "crypto": "^1.0.1"
+  }
+}
