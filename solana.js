@@ -31,16 +31,27 @@ const testRun = () => {
   console.log('Nonce:', nonce);
   console.log(typeof nonce)
 
-
-
   const message = 'Hello Solana';
+
+  const encoder = new TextEncoder();
+  const messageUint8 = encoder.encode(message);
+  
   console.log('Message:', message);
 
-  const encryptedMessage = nacl.box(message, nonce, publicKeyB, privateKeyA);
+  console.log('uint8 message:', messageUint8)
+
+
+
+  const encryptedMessage = nacl.box(messageUint8, nonce, publicKeyB, privateKeyA);
   console.log('Encrypted Message:', encryptedMessage);
 
-  // const decryptedMessage = nacl.box.open(encryptedMessage, nonce, publicKeyA, privateKeyB)
-  // console.log('Decrypted Message:', decryptedMessage);
+  const decryptedMessage = nacl.box.open(encryptedMessage, nonce, publicKeyA, privateKeyB)
+  console.log('Decrypted Message:', decryptedMessage);
+
+  const decoder = new TextDecoder();
+  const decryptedMessageDecoded = decoder.decode(decryptedMessage);
+  console.log('Decrypted Message Decoded:', decryptedMessageDecoded);
+  
 }
 
 testRun();
